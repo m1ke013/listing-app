@@ -24,17 +24,19 @@ class ProductController extends Controller
     {
         // $products = DB::select('select * from products where status = ?', [1]);
         $products = Product::orderby('id')->get();
-        // foreach ($products as $product) {
-        //     $prod_array[] = array(
-        //         "name"  => $product->name,
-        //         "description"  => $product->description,
-        //         "category"  => $product->category,
-        //         "quantity"  => $product->quantity,
-        //         "status"  => $product->status
-        //     );
-        // }
- 
         return view('products.index', ['products' => $products]);
+    }
 
+    public function insertProduct(Request $request){
+
+        $product = new Product;
+        $product->name = $request->name;
+        $product->decription = $request->decription;
+        $product->price = $request->price;
+        $product->category = $request->category;
+        $product->status = $request->status;
+
+        $product->save();
+        return redirect()->route('products.index')->with('success','Product Added');
     }
 }
