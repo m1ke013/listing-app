@@ -19,4 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/products', [ProductController::class,'selectProduct']);
+Route::get('/products', 
+    [ProductController::class,'selectProduct']
+);
+
+Route::get('/create', function () {
+    return view('products.add_product');
+});
