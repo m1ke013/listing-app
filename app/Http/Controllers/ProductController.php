@@ -13,25 +13,26 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(){ 
-        $product = Product::orderby('create_at')->get();
+        $data = Product::where('status',0)->orwhere('status',NULL)->orderby('created_at')->get();
         // return view('products.index',['products' => $product]);
-        return view('products.index', ['products' => $products]);
+        return view('products.index', ['products' => $data]);
 
 
     }
 
-    public function selectProduct(): View
-    {
-        // $products = DB::select('select * from products where status = ?', [1]);
-        $products = Product::orderby('id')->get();
-        return view('products.index', ['products' => $products]);
+    public function create(){
+        return view('products.add_product');
     }
 
-    public function insertProduct(Request $request){
+    public function store(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
 
         $product = new Product;
         $product->name = $request->name;
-        $product->decription = $request->decription;
+        $product->description = $request->description;
         $product->price = $request->price;
         $product->category = $request->category;
         $product->status = $request->status;
@@ -39,4 +40,38 @@ class ProductController extends Controller
         $product->save();
         return redirect()->route('products.index')->with('success','Product Added');
     }
+
+    public function edit($id){
+        $product = Product::findOrFail($id);
+        return view('products.edit_product',['product'=>$product]);
+    }
+
+
+    public function update(Request $request, Product $product){
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required'
+        ]);
+
+        $product = Product::find($product->id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->price = $request->price;
+        $product->category = $request->category;
+        $product->status = $request->status;
+        $product->save();
+        return redirect()->route('products.index')->with('success','Product has been updated successfully');
+    }
+
+    public function destroy($id){
+        // 0 and NULL - new
+        // 1 - delete
+        $product = Product::findOrFail($id);
+        $product->status = '1';
+        $product->save();
+        return redirect('products')->with('success','Product has been deleted successfully');
+    }
+
+    
+
 }
