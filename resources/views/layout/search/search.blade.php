@@ -1,12 +1,19 @@
-<!-- <form class="d-flex" role="search">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-</form> -->
 
-<div class="container-fluid text-center">
-  <p>Search here</p>  
-  <form class="form-inline">
-    <input type="email" class="form-control" size="50" placeholder="Email Address">
-    <button type="button" class="btn btn-danger">Search</button>
-  </form>
-  </div>
+<div class="container-fluid">
+    <br>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+        <form method="get" action="{{route('products.index')}}" accept-charset="UTF-8" role="search">
+            <div class="search input-group mb-3" >
+                <input type="text" class="round form-control" placeholder="Search product ..."  aria-describedby="button-addon1" size="50" name="search" value="{{request('search')}}">
+                <button class="btn btn-outline-secondary corner" type="submit" id="button-addon1">Search</button>
+            </div>
+        </form>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
+</div>

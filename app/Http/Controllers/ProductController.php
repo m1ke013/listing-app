@@ -12,9 +12,20 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function index(){ 
-        $data = Product::where('status',0)->orwhere('status',NULL)->orderby('created_at')->get();
-        // return view('products.index',['products' => $product]);
+    public function index(Request $request){ 
+        $keyword = $request->get('search');
+        // $page = 10;
+        if(!empty($keyword)){
+            $data = Product::where('status',0)
+            ->orwhere('status',NULL)
+            ->orwhere('name','LIKE','%$keyword%')
+            ->orwhere('category','LIKE','%$keyword%')
+            ->get();
+        }else{
+            $data = Product::where('status',0)
+            ->orwhere('status',NULL)->get();
+        }
+
         return view('products.index', ['products' => $data]);
 
 
@@ -34,6 +45,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->quantity = $request->quantity;
         $product->category = $request->category;
         $product->status = $request->status;
 
@@ -57,8 +69,9 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
+        $product->quantity = $request->quantity;
         $product->category = $request->category;
-        $product->status = $request->status;
+        $product->status = 0;
         $product->save();
         return redirect()->route('products.index')->with('success','Product has been updated successfully');
     }

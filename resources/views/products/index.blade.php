@@ -35,12 +35,13 @@
     </div>
 @else
     <div class="h-100 d-flex align-items-center justify-content-center">
-        <h5>No Data</h5>
+        <h5>No Product Found</h5>
     </div>
 @endif
 </div>
 
 @include('layout.footer.footer')
+
 @if ($message = Session::get('success'))
     <script type="text/javascript">
         const Toast = Swal.mixin({
@@ -80,3 +81,5 @@
         })
     }
 </script>
+
+<!-- @include('layout.pagination.pagination') -->
