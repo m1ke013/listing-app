@@ -1,5 +1,9 @@
+{{-- @include('layouts.header.header')
 @include('layouts.header.navigation')
-@include('layouts.cdn')
+@include('layouts.cdn') --}}
+
+@extends('layouts.app')
+@section('content')
 
 <div class="container">  <br>  
     <h3>Edit Product</h3>
@@ -63,5 +67,5 @@
         </div>
     </div>
 </div>
-
+@endsection
 @include('layouts.footer.footer')

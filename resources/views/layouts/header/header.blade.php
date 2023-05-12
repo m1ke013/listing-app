@@ -6,4 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
 </head>
+<!-- Scripts -->
+@vite(['resources/sass/app.scss', 'resources/js/app.js'])
 <body>

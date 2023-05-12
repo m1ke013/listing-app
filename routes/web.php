@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -14,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::resource('/products', 
@@ -27,7 +28,6 @@ Route::get('/create', function () {
     return view('products.add_product');
 });
 
-// Login  and Register
-Auth::routes();
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,7 +1,9 @@
+{{-- @include('layouts.header.header')
 @include('layouts.cdn')
-@include('layouts.header.navigation')
+@include('layouts.header.navigation') --}}
 
-
+@extends('layouts.app')
+@section('content')
 
 <div class="container">  <br>  
   <h3>Create New Product</h3>
@@ -64,5 +66,5 @@
   </div>
   </div>
 </div>
-
+@endsection
 @include('layouts.footer.footer')

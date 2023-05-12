@@ -12,6 +12,13 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    
     public function index(Request $request){ 
         $keyword = trim($request->get('search'));
         $page = 4;

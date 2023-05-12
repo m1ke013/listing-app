@@ -1,7 +1,11 @@
+{{-- @include('layouts.header.header')
 @include('layouts.cdn')
 @include('layouts.header.navigation')
-@include('layouts.header.header')
-@include('layouts.search.search')
+--}}
+
+@extends('layouts.app')
+@section('content')
+@include('layouts.search.search') 
 
 <div class="container">
 @if (count($products) > 0)
@@ -79,4 +83,5 @@
         })
     }
 </script>
+@endsection
 @include('layouts.footer.footer')

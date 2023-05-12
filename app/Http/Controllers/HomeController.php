@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\Product;
+
+
 
 class HomeController extends Controller
 {
@@ -21,8 +23,21 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $keyword = trim($request->get('search'));
+        $page = 4;
+        if(!empty($keyword)){
+            $data = Product::where('name','like',"%$keyword%")
+            ->orWhere('description','like',"%$keyword%")
+            ->where('status',0)
+            ->get();
+            // ->latest()->paginate($page);
+        }else{
+            $data =  Product::where('status',0)
+            ->get();
+            // ->latest()->paginate($page);
+        }
+        return view('products.index', ['products' => $data]);
     }
 }
