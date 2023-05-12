@@ -1,5 +1,5 @@
-@include('layout.cdn')
 @include('layout.header.navigation')
+@include('layout.cdn')
 
 <div class="container">  <br>  
     <h3>Edit Product</h3>

@@ -1,5 +1,6 @@
 @include('layout.cdn')
 @include('layout.header.navigation')
+@include('layout.header.header')
 @include('layout.search.search')
 
 <div class="container">
@@ -78,5 +79,4 @@
         })
     }
 </script>
-
-<!-- @include('layout.pagination.pagination') -->
+@include('layout.footer.footer')

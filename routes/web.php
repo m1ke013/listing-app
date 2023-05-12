@@ -16,7 +16,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.login');
 });
 
 Route::resource('/products', 
@@ -26,3 +26,9 @@ Route::resource('/products',
 Route::get('/create', function () {
     return view('products.add_product');
 });
+
+// Login  and Register
+Route::get('/login', function () {
+    return view('login.login');
+});
+
