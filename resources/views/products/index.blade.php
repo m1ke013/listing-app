@@ -1,7 +1,7 @@
-@include('layout.cdn')
-@include('layout.header.navigation')
-@include('layout.header.header')
-@include('layout.search.search')
+@include('layouts.cdn')
+@include('layouts.header.navigation')
+@include('layouts.header.header')
+@include('layouts.search.search')
 
 <div class="container">
 @if (count($products) > 0)
@@ -38,7 +38,7 @@
 @endif
 </div>
 
-@include('layout.footer.footer')
+@include('layouts.footer.footer')
 
 @if ($message = Session::get('success'))
     <script type="text/javascript">
@@ -79,4 +79,4 @@
         })
     }
 </script>
-@include('layout.footer.footer')
+@include('layouts.footer.footer')

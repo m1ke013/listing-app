@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +16,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('login.login');
+    return view('welcome');
 });
 
 Route::resource('/products', 
@@ -28,7 +28,6 @@ Route::get('/create', function () {
 });
 
 // Login  and Register
-Route::get('/login', function () {
-    return view('login.login');
-});
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

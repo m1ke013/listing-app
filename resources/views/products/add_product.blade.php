@@ -1,5 +1,5 @@
-@include('layout.cdn')
-@include('layout.header.navigation')
+@include('layouts.cdn')
+@include('layouts.header.navigation')
 
 
 
@@ -65,4 +65,4 @@
   </div>
 </div>
 
-@include('layout.footer.footer')
+@include('layouts.footer.footer')

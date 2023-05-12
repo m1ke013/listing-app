@@ -1,5 +1,5 @@
-@include('layout.header.navigation')
-@include('layout.cdn')
+@include('layouts.header.navigation')
+@include('layouts.cdn')
 
 <div class="container">  <br>  
     <h3>Edit Product</h3>
@@ -64,4 +64,4 @@
     </div>
 </div>
 
-@include('layout.footer.footer')
+@include('layouts.footer.footer')

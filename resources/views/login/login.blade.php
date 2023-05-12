@@ -1,5 +1,5 @@
-@include('layout.cdn')
-@include('layout.header.header')
+@include('layouts.cdn')
+@include('layouts.header.header')
 <div class="container">
     <div class="h-100 d-flex align-items-center justify-content-center">
         <form action="" method="POST">
@@ -21,5 +21,5 @@
     </div>
 
 </div>
-@include('layout.footer.footer')
+@include('layouts.footer.footer')
 
