@@ -1,11 +1,7 @@
 @include('layout.cdn')
 @include('layout.header.navigation')
 
-<div class="container">
-    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 
-    </div>
-</div>
 
 <div class="container">  <br>  
   <h3>Create New Product</h3>
@@ -30,6 +26,10 @@
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+            </div>
+            <div class="form-group"> <!--NOT YET WORKING-->
+                <label for="uploadImage">Select a Image</label>
+                <input class="form-control" type="file" id="uploadImage" name="image">
             </div>
             <div class="form-group">
                 <label for="category">Category</label>

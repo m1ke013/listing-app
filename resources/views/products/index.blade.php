@@ -2,20 +2,15 @@
 @include('layout.header.navigation')
 @include('layout.search.search')
 
-
-
-<!-- <h1>TEST</h1> -->
-
 <div class="container">
 @if (count($products) > 0)
     <div class="row row-cols-1 row-cols-md-4 g-4">
     <!-- for debug -->
     <!-- <p>{{$products}}</p> -->
-
         @foreach ($products as $product)
             <div class="col">
                 <div class="card h-100">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="{{asset('images/' .$product->image)}}" class="card-img-top" alt="">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <h5 class="card-title">{{ $product->name }}</h5>

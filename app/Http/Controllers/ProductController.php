@@ -38,8 +38,14 @@ class ProductController extends Controller
     public function store(Request $request){
         $request->validate([
             'name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg,gif'
         ]);
+
+        // Select a image
+        // $image = "test.png";
+        $image = time() .'.'. request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'),$image);
 
         $product = new Product;
         $product->name = $request->name;
@@ -47,7 +53,8 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->quantity = $request->quantity;
         $product->category = $request->category;
-        $product->status = $request->status;
+        $product->image = $image;
+        $product->status = 0;
 
         $product->save();
         return redirect()->route('products.index')->with('success','Product Added');
@@ -62,8 +69,11 @@ class ProductController extends Controller
     public function update(Request $request, Product $product){
         $request->validate([
             'name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg,gif'
         ]);
+        $image = time() .'.'. request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'),$image);
 
         $product = Product::find($product->id);
         $product->name = $request->name;
@@ -71,6 +81,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->quantity = $request->quantity;
         $product->category = $request->category;
+        $product->image = $image;
         $product->status = 0;
         $product->save();
         return redirect()->route('products.index')->with('success','Product has been updated successfully');
