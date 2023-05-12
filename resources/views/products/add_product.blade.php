@@ -11,6 +11,15 @@
   <h3>Create New Product</h3>
   <div class="row">
     <div class="col-sm-8">
+        @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <form method="POST" action="{{ route('products.store')}}" enctype="multipart/form-data" >
             @csrf
             <div class="form-group">
@@ -42,15 +51,6 @@
             <div class="form-group  float-end">
                 <button type="submit" class="btn btn-secondary btn-sm">Save</button>
             </div>
-            @if ($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <ul>
-                    @foreach($errors->all() as $error)
-                      <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
         </form> 
     </div>
     <div class="col-sm-4">

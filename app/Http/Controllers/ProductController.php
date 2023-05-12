@@ -13,19 +13,19 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     public function index(Request $request){ 
-        $keyword = $request->get('search');
-        // $page = 10;
+        $keyword = trim($request->get('search'));
+        $page = 4;
         if(!empty($keyword)){
-            $data = Product::where('status',0)
-            ->orwhere('status',NULL)
-            ->orwhere('name','LIKE','%$keyword%')
-            ->orwhere('category','LIKE','%$keyword%')
+            $data = Product::where('name','like',"%$keyword%")
+            ->orWhere('description','like',"%$keyword%")
+            ->where('status',0)
             ->get();
+            // ->latest()->paginate($page);
         }else{
-            $data = Product::where('status',0)
-            ->orwhere('status',NULL)->get();
+            $data =  Product::where('status',0)
+            ->get();
+            // ->latest()->paginate($page);
         }
-
         return view('products.index', ['products' => $data]);
 
 

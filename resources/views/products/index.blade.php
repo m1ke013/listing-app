@@ -3,13 +3,15 @@
 @include('layout.search.search')
 
 
-<!-- for debug -->
-<!-- <p>{{$products}}</p> -->
+
 <!-- <h1>TEST</h1> -->
 
 <div class="container">
 @if (count($products) > 0)
     <div class="row row-cols-1 row-cols-md-4 g-4">
+    <!-- for debug -->
+    <!-- <p>{{$products}}</p> -->
+
         @foreach ($products as $product)
             <div class="col">
                 <div class="card h-100">
